@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FmfApp</string>
+    <string name="title_activity_flight">flight</string>
+    <string name="button">Submit</string>
+</resources>

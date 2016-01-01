@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+            <EditText
+                android:id="@+id/from_1"
+                android:layout_width="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:text="Colombo, Sri Lanka (CMB)"
+                android:inputType="text"
+                android:layout_alignParentEnd="true"
+                android:layout_row="10"
+                android:layout_column="3"/>
+
+
+            <EditText
+                android:id="@+id/to_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="London, UK - Heathrow Airport (LHR)"
+                android:inputType="text"
+                android:layout_weight="0.5"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+                android:layout_row="10"
+                android:layout_column="3" />
+
+
+            <EditText
+                android:id="@+id/date1"
+                android:layout_width="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.4"
+                android:layout_height="wrap_content"
+                android:text="Departed"
+                android:inputType="text"
+                android:layout_alignParentEnd="true"
+                android:layout_row="10"
+                android:layout_column="3"/>
+
+
+            <EditText
+                android:id="@+id/date2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Return"
+                android:inputType="text"
+                android:layout_weight="0.5"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+                android:layout_row="10"
+                android:layout_column="3" />
+
+
+        <EditText
+            android:id="@+id/passengers"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="1 Adult 0 Children 0 Infant"
+            android:inputType="text"
+            android:layout_weight="0.5"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_row="10"
+            android:layout_column="3" />
+
+
+
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find Flight"
+            android:id="@+id/search_flight_submit"
+            android:background="@color/colorYellow"
+            android:layout_column="8" />
+
+
+    </LinearLayout>
+
+</ScrollView>
