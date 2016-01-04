@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Adult"
+                android:id="@+id/txtAdult"
+                android:layout_column="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Child"
+                android:id="@+id/txtChildren"
+                android:layout_column="2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Infant"
+                android:id="@+id/txtInfant"
+                android:layout_column="3" />
+
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <NumberPicker
+                android:id="@+id/adult"
+                android:layout_width="81dp"
+                android:layout_height="118dp"
+
+                android:layout_below="@+id/numberPicker2"
+                android:layout_toEndOf="@+id/numberPicker2"
+                android:layout_row="10"
+                android:layout_column="1"
+                android:solidColor="@color/colorPrimaryDark"/>
+
+            <NumberPicker
+                android:id="@+id/children"
+                android:layout_width="81dp"
+                android:layout_height="118dp"
+
+                android:layout_below="@+id/numberPicker2"
+                android:layout_toEndOf="@+id/numberPicker2"
+                android:layout_row="10"
+                android:layout_column="2"
+                android:solidColor="@color/colorYellow" />
+
+            <NumberPicker
+                android:id="@+id/infant"
+                android:layout_width="81dp"
+                android:layout_height="118dp"
+
+                android:layout_below="@+id/numberPicker2"
+                android:layout_toEndOf="@+id/numberPicker2"
+                android:layout_row="10"
+                android:layout_column="3"
+                android:solidColor="@color/colorAccent"/>
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        android:id="@+id/add"
+        android:background="@color/colorYellow"
+        android:layout_column="1"
+        android:layout_row="23" />
+
+
+
+</LinearLayout>

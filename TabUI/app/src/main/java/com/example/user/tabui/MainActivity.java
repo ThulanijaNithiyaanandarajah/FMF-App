@@ -50,23 +50,23 @@ public class MainActivity extends AppCompatActivity {
 
                 case 0: return Fragment1.newInstance();
                 case 1: return Fragment2.newInstance();
-                case 2: return Fragment3.newInstance();
+                //case 2: return Fragment1.newInstance();// Fragment3.newInstance();
                 default: return Fragment1.newInstance();
             }
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         private int[] imageResId = {
                 R.drawable.ic_one_way,
-                R.drawable.ic_round_trip,
-                R.drawable.ic_multi_city
+                R.drawable.ic_round_trip
+
         };
 
-        private String tabTitles[] = new String[] { "One Way", "Round Trip", "Multi City" };
+        private String tabTitles[] = new String[] { "One Way", "Round Trip"};
 
         @Override
         public CharSequence getPageTitle(int position) {
