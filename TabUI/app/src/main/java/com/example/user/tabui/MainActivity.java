@@ -1,5 +1,6 @@
 package com.example.user.tabui;
 
+import android.app.FragmentTransaction;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -26,7 +27,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Setup the viewPager
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+
+
+
+
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+
         viewPager.setAdapter(pagerAdapter);
 
         // Setup the Tabs
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         // This method ensures that tab selection events update the ViewPager and page changes update the selected tab.
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.setCurrentItem(1);
     }
 
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
@@ -48,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int pos) {
             switch(pos) {
 
-                case 0: return Fragment1.newInstance();
-                case 1: return Fragment2.newInstance();
+                case 0: return Fragment1.newInstance(1);
+                case 1: return Fragment1.newInstance(2);
                 //case 2: return Fragment1.newInstance();// Fragment3.newInstance();
-                default: return Fragment1.newInstance();
+                default:return Fragment1.newInstance(1);
             }
         }
 

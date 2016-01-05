@@ -12,7 +12,7 @@ import java.util.Calendar;
 /**
  * Created by chathuran on 1/4/2016.
  */
-public class DatePickerFragment extends DialogFragment  implements DatePickerDialog.OnDateSetListener  {
+public class DatePickerFragment1 extends DialogFragment  implements DatePickerDialog.OnDateSetListener  {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){

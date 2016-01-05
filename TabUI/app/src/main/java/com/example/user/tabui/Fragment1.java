@@ -5,31 +5,32 @@ package com.example.user.tabui;
  */
 
 
-        import android.app.Activity;
-        import android.app.Dialog;
-        import android.app.DialogFragment;
-        import android.app.FragmentManager;
-        import android.content.Context;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
-        import android.support.v4.app.Fragment;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.AutoCompleteTextView;
-        import android.widget.Button;
-        import android.widget.DatePicker;
-        import android.widget.EditText;
-        import android.widget.NumberPicker;
-        import android.widget.Toast;
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.Toast;
 
-        import org.json.JSONArray;
-        import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-        import java.text.SimpleDateFormat;
-        import java.util.ArrayList;
-        import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class Fragment1 extends Fragment {
@@ -39,28 +40,31 @@ public class Fragment1 extends Fragment {
      *
      * @return A new instance of fragment Fragment1.
      */
+    int id;
     //Context context= getActivity().getApplicationContext();
-    public static Fragment1 newInstance() {
-        return new Fragment1();
+    public static Fragment1 newInstance(int id) {
+        return new Fragment1(id);
     }
-        String v1,val;
-        AutoCompleteTextView from_1;
-         AutoCompleteTextView to_1;
-         AutoCompleteTextView autoText;
-       // EditText to_1;
-        EditText date_1;
-        EditText date_2;
-        EditText passengers;
-        NumberPicker selBChld;
-        Button  search_flight_submit;
+
+    String v1,val;
+    AutoCompleteTextView from_1;
+    AutoCompleteTextView to_1;
+    AutoCompleteTextView autoText;
+    // EditText to_1;
+    EditText date_1;
+    EditText date_2;
+    EditText passengers;
+    NumberPicker selBChld;
+    Button  search_flight_submit;
     JSONObject jsonobject;
     JSONArray jsonarray;
     ArrayList<String> worldlist;
     AutoCompleteTextView autocompleteTextView;
 
 
-    public Fragment1() {
+    public Fragment1(int id) {
         // Required empty public constructor
+        this.id=id;
     }
 
     @Override
@@ -78,22 +82,28 @@ public class Fragment1 extends Fragment {
         View view= inflater.inflate(R.layout.fragment_fragment1, container, false);
 
 
-     //   from_1=(EditText)view.findViewById(R.id.from_1_f1);
+        //   from_1=(EditText)view.findViewById(R.id.from_1_f1);
 
         date_1=(EditText)view.findViewById(R.id.date1_f1);
-       // date_2=(EditText)view.findViewById(R.id.date2_f1);
+        date_2=(EditText)view.findViewById(R.id.date2_f1);
         passengers = (EditText)view.findViewById(R.id.passengers_f1);
-       // selBChld = (NumberPicker)v.findViewById(R.id.numberPicker2);
+        // selBChld = (NumberPicker)v.findViewById(R.id.numberPicker2);
         search_flight_submit=(Button)view.findViewById(R.id.search_flight_submit_f1);
         from_1 = (AutoCompleteTextView)view.findViewById(R.id.from_1_f1);
         new DownloadJSON().execute();
         //from_1=autoText;
-        to_1=(AutoCompleteTextView)view.findViewById(R.id.to_1_f1);
+        to_1 = (AutoCompleteTextView) view.findViewById(R.id.to_1_f1);
         new DownloadJSONForTo().execute();
+        if(id == 1){
 
+            date_2.setEnabled(false);
+        }else{
+
+        }
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        c.add(Calendar.DATE, 4);
         String formattedDate = df.format(c.getTime());
         date_1.setText(formattedDate.toString());
 
@@ -107,6 +117,12 @@ public class Fragment1 extends Fragment {
                 int selAdt, selChld, day_1, month_1, year_1, day_2, month_2, year_2;
 
                 from =  from_1.getText().toString();
+                if (id == 1) {
+
+
+                } else {
+                    date2 = date_2.getText().toString();
+                }
                 to = to_1.getText().toString();
                 passeng = passengers.getText().toString();
                 Toast.makeText(getContext(),from+ to,Toast.LENGTH_LONG).show();
@@ -115,44 +131,83 @@ public class Fragment1 extends Fragment {
             }
         });
 
-        date_1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        date_1.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
+            public boolean onTouch(View v, MotionEvent event) {
+                // DialogFragment newFragment = new DatePickerFragment1();
+                // newFragment.show(getActivity().getFragmentManager(), "Date Picker");
+                //  date_1.setFocusable(true);
+                //   date_1.requestFocus();
+                //  date_1.setSelection(date_1.getText().length());
+                Log.v("click", "onMtouch");
+                //  DialogFragment newFragment = new DatePickerFragment1();
+                // newFragment.show(getActivity().getFragmentManager(), "Date Picker");
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        DialogFragment newFragment = new DatePickerFragment1();
+                        newFragment.show(getActivity().getFragmentManager(), "Date Picker");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
 
-                    // get_date(1);
-                    Fragment1 f1=new Fragment1();
-                    DialogFragment newFragment = new DatePickerFragment();
-                    newFragment.show(getActivity().getFragmentManager(), "Date Picker");
-                  //  Toast.makeText(getActivity().getApplicationContext(), getActivity().getFragmentManager().toString(), Toast.LENGTH_LONG).show();
+                        break;
+                    case MotionEvent.ACTION_UP:
 
-                  //  DialogFragment newFragment = new NumberPickerFragment();
-                   // newFragment.show(getActivity().getFragmentManager(), "Date Picker");
+                        break;
                 }
+
+                return false;
             }
 
         });
-/*        date_2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        if(id != 1) {
+            date_2.setOnTouchListener(new View.OnTouchListener() {
 
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-               //     get_date(2);
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            DialogFragment newFragment = new DatePickerFragment2();
+                            newFragment.show(getActivity().getFragmentManager(), "Date Picker");
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+
+                            break;
+                        case MotionEvent.ACTION_UP:
+
+                            break;
+                    }
+
+                    return false;
                 }
-            }
 
-        }); */
-        passengers.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            });
+        }
 
+
+        passengers.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    //     show_passenger();
-                }
-            }
+            public boolean onTouch(View v, MotionEvent event) {
 
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        DialogFragment newFragment = new NumberPickerFragment();
+                        newFragment.show(getActivity().getFragmentManager(), "Number Picker");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+
+                        break;
+                }
+
+
+                return false;
+            }
         });
+
 
 
 
@@ -194,7 +249,7 @@ public class Fragment1 extends Fragment {
 
             SearchableAdapter autoCompleteAdapter = new SearchableAdapter(getContext(), android.R.layout.simple_list_item_1, worldlist);
             from_1.setThreshold(1);
-           from_1.setAdapter(autoCompleteAdapter);
+            from_1.setAdapter(autoCompleteAdapter);
 
         }
     }

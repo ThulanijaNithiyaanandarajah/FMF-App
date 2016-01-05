@@ -18,8 +18,9 @@
             style="@style/MyCustomTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMode="scrollable"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:tabMaxWidth="0dp"
+            app:tabGravity="fill"
+            app:tabMode="fixed"/>
 
     </android.support.design.widget.AppBarLayout>
 

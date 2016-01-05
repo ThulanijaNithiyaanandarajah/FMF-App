@@ -12,7 +12,7 @@ import java.util.Calendar;
 /**
  * Created by chathuran on 1/4/2016.
  */
-public class DatePickerFragment extends DialogFragment  implements DatePickerDialog.OnDateSetListener  {
+public class DatePickerFragment2 extends DialogFragment  implements DatePickerDialog.OnDateSetListener  {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -32,7 +32,7 @@ public class DatePickerFragment extends DialogFragment  implements DatePickerDia
     }
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Do something with the date chosen by the user
-        TextView tv = (TextView) getActivity().findViewById(R.id.date1_f1);
+        TextView tv = (TextView) getActivity().findViewById(R.id.date2_f1);
 
 
 
